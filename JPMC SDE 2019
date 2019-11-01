@@ -1,0 +1,78 @@
+ Given a 2D matrix. of n rows and columns. Each cell(pixel) has a value from 0-255.  The first n/3 rows represent colour red, next n/3 rows colour green and then n/3 row represent blue.
+
+You have to output a single 1-d array containing 8bit binary value for each pixel.
+
+
+
+Example: 1   2  3
+
+            4  5   6
+
+                7  8  9
+
+               10 11 12
+
+              13 14 15
+
+              16 17 18
+
+Here first  2 rows represent Red,THEN GREEN THEN BLUE
+
+output= [1,7 ,13,2,8,14,3,9,15,4,10,16 and so on]
+
+Note in output you have to give binary representation for each number for example for 1: 00000001 for 7:00000111
+
+////////////////////////////////////////////////////////////
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+void p(int n) 
+{ 
+    // Size of an integer is assumed to be 32 bits 
+    for (int i = 7; i >= 0; i--) { 
+        int k = n >> i; 
+        if (k & 1) 
+            cout << "1"; 
+        else
+            cout << "0"; 
+    } 
+    cout<<" ";
+}
+
+int main()
+{
+    int a[6][3];
+    for(int i=0;i<6;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+  /*  for(int i=0;i<6;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            p(a[i][j]);
+        }
+        cout<<"\n";
+    }*/
+    for(int i=0;i<2;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            p(a[i][j]);
+            p(a[2+i][j]);
+            p(a[4+i][j]);
+            cout<<"\n";
+        }
+        //cout<<"\n";
+    }
+    
+
+
+
+    return 0;
+}
